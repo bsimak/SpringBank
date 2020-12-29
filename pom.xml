@@ -4,29 +4,143 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <! -- The Basics -->
+    <!-- The Basics -->
     <groupId>org.example</groupId>
     <artifactId>SpringBank</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-
     <dependencies>
-        /! --- add here Dependencies ->
+
+        <!-- ****** for Tomcat ***** -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>9.0.36</version>
+        </dependency>
+
+        <!-- ****** for Spring ***** -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <!-- ****** for Testing ***** -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junit.platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.3.2</version>
+        </dependency>
     </dependencies>
+
+    <!--
+    <parent></parent>
+    <modules></modules>
+    -->
 
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
         <project.build.sourceEncode>UTF-8</project.build.sourceEncode>
+
+
+        <!-- ****** for Testing ***** -->
+        <junit.jupiter.version>5.5.2</junit.jupiter.version>
+        <junit.platform.version>1.5.2</junit.platform.version>
     </properties>
 
-    <! -- The Build Settings -->
+    <!-- The Build Settings -->
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+            </plugin>
 
+            <!-- **** MANIFEST File ***** -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>Application</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- **** for Testing Purpose **** -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                  <!-- *** muss später getauscht werden
+                                    <mainClass>org.example.ApplicationLauncher</mainClass>
+                                    -->
+                                    <mainClass>Application</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
+
     <reporting>
         <plugins>
+            <!-- **** for Unit Testing Purpose **** -->
+            <!-- **** Run: mvn clean test *** -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -35,7 +149,33 @@
         </plugins>
     </reporting>
 
+    <!-- More Project Information -->
+    <name>SpringBank</name>
+    <description>Spring Version of MyBank</description>
+    <url>https://github.com/bsimak/SpringBank</url>
+    <inceptionYear>2020</inceptionYear>
+    <licenses>
+        <license>
+            <comments>no license</comments>
+        </license>
+    </licenses>
+    <organization>
+        <name>private</name>
+    </organization>
+    <developers>
+        <developer>
+            <name>B.Simak</name>
+        </developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <name>M.Behler</name>
+            <url>www.marcobehler.com</url>
+        </contributor>
+    </contributors>
+
     <!-- Environment Settings -->
+    <!--
     <issueManagement>...</issueManagement>
     <ciManagement>...</ciManagement>
     <mailingLists>...</mailingLists>
@@ -51,6 +191,5 @@
     <pluginRepositories>...</pluginRepositories>
     <distributionManagement>...</distributionManagement>
     <profiles>...</profiles>
-
-
+    -->
 </project>
