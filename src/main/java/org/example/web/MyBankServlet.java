@@ -1,25 +1,46 @@
 package org.example.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.context.Application;
+import org.example.context.ApplicationConfiguration;
 import org.example.model.Transaction;
+import org.example.service.TransactionService;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class MyBankServlet extends HttpServlet{
+public class MyBankServlet extends HttpServlet {
+
+    private TransactionService transactionService;
+    private ObjectMapper objectMapper;
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    public void init() throws ServletException {
+        AnnotationConfigApplicationContext ctx
+                = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+        // is only needed that @PreDestroy works properly with IDE
+        ctx.registerShutdownHook();
+
+        this.objectMapper = ctx.getBean(ObjectMapper.class);
+        this.transactionService = ctx.getBean(TransactionService.class);
+
+        System.out.println("im servlet - init");
+    }
+
+        @Override
+        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
         if (request.getRequestURI().equalsIgnoreCase("/transactions")) {
 
             System.out.println("MyBankServlet doPost");
             Integer amount = Integer.valueOf(request.getParameter("amount"));
             String reference = request.getParameter("reference");
 
-            Transaction transaction = Application.transactionService.create(amount,reference);
+            Transaction transaction = transactionService.create(amount,reference);
 
             response.setContentType("application/json; charset=UTF-8");
             String json = new ObjectMapper().writeValueAsString(transaction);
@@ -47,9 +68,9 @@ public class MyBankServlet extends HttpServlet{
             System.out.println("MyBankServlet doGet");
 
             response.setContentType("application/json; charset=UTF-8");
-            List<Transaction> transactions = Application.transactionService.findAll();
-            response.getWriter().print(Application.objectMapper.writeValueAsString(transactions));
-            System.out.println(Application.objectMapper.writeValueAsString(transactions));
+            List<Transaction> transactions = transactionService.findAll();
+            response.getWriter().print(objectMapper.writeValueAsString(transactions));
+            System.out.println(objectMapper.writeValueAsString(transactions));
         }
     }
 }

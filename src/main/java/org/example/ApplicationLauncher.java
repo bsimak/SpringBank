@@ -29,7 +29,7 @@ public class ApplicationLauncher {
         tomcat.getConnector();
 
         Context ctx = tomcat.addContext("", null);
-        Wrapper servlet = Tomcat.addServlet(ctx, "org.com.example.org.example.web.MyBankServlet", new MyBankServlet());
+        Wrapper servlet = Tomcat.addServlet(ctx, "org.example.web.MyBankServlet", new MyBankServlet());
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/*");
 

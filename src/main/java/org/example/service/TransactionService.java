@@ -1,13 +1,15 @@
 package org.example.service;
 
 import org.example.model.Transaction;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+@Component
 public class TransactionService {
 
-    private List<Transaction> transactions = new CopyOnWriteArrayList<>(); // (1)
+    private final List<Transaction> transactions = new CopyOnWriteArrayList<>(); // (1)
 
     public TransactionService() {
     }
