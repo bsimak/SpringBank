@@ -39,7 +39,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>org.example.context.Application</mainClass>
+              <mainClass>org.example.context.ApplicationLauncher</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -68,7 +68,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>org.example.context.Application</mainClass>
+                  <mainClass>org.example.ApplicationLauncher</mainClass>
                 </transformer>
               </transformers>
             </configuration>

@@ -1,7 +1,5 @@
-/Users/barbara.simak/Documents/SpringBank/src/main/java/ApplicationStart.java
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/context/ApplicationConfiguration.java
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/web/MyBankServlet.java
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/ApplicationLauncher.java
-/Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/context/Application.java
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/model/Transaction.java
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/service/TransactionService.java
