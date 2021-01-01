@@ -15,17 +15,19 @@ public class ApplicationLauncher {
         /** use this with java -Dport80xx -jar target/xy
          if Port not provided as Parameter -> use default Port */
 
+       // System.setProperty("server.port", "8090");
+
         int port;
-        String sPort = (System.getProperty("port"));
+        String sPort = (System.getProperty("server.port"));
 
         if ((sPort == null) || (sPort.isEmpty())) {
             port = defPort;
         } else {
-            port = Integer.parseInt(System.getProperty("port"));
+            port = Integer.parseInt(sPort);
         }
         Tomcat tomcat = new Tomcat();
-
         tomcat.setPort(port);
+
         tomcat.getConnector();
 
         Context ctx = tomcat.addContext("", null);
