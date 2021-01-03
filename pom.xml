@@ -25,6 +25,17 @@
             <version>2.11.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.11.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+
         <!-- ****** for Spring ***** -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -37,6 +48,18 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>1.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.2.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.1-b12</version>
+        </dependency>
+
 
         <!-- ****** for Testing ***** -->
         <dependency>
@@ -56,8 +79,18 @@
             <artifactId>spring-test</artifactId>
             <version>5.3.2</version>
         </dependency>
-    </dependencies>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+    </dependencies>
     <!--
     <parent></parent>
     <modules></modules>
@@ -67,7 +100,6 @@
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
         <project.build.sourceEncode>UTF-8</project.build.sourceEncode>
-
 
         <!-- ****** for Testing ***** -->
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
@@ -91,7 +123,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.example.context.ApplicationLauncher</mainClass>
+                            <mainClass>org.example.ApplicationLauncher</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

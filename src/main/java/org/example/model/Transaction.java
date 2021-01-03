@@ -1,28 +1,28 @@
 package org.example.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.UUID;
-import java.time.Clock;
 import java.time.ZonedDateTime;
 
 public class Transaction {
     private String id;
     private String reference;
-    private String timestamp;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mmZ")
+    private ZonedDateTime timestamp;
+
     private Integer amount;
 
     public Transaction(){
     }
-    public Transaction(Integer amount,String reference){
+    public Transaction(Integer amount,String reference, ZonedDateTime timestamp){
 
         System.out.println("in Transaction Method" + reference);
         this.id = UUID.randomUUID().toString();
-        this.timestamp = getTimestamp();
+        this.timestamp = timestamp;
         this.reference = reference;
         this.amount = amount;
     }
-
     // Transaction Id
     public String getId() {
         return id;
@@ -31,11 +31,10 @@ public class Transaction {
         this.id = id;
     }
 
-    public String getTimestamp() {
-        this.timestamp = ZonedDateTime.now(Clock.systemUTC()).toString();
+    public ZonedDateTime getTimestamp() {
         return timestamp;
     }
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(ZonedDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
