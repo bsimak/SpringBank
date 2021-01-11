@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Bank Transactions</title>
+</head>
+<body>
+<p>Your Bank Transactions,
+    <span th:text="${username}" th:remove="tag">[Username]</span>,
+    up to now
+    <span th:text="${#dates.format(currentDate, 'dd-MM-yyyy HH:mm')}">[currentDate]</span>
+</p>
+<p>
+    <span th:text="${transaction}" th:remove="tag">[Transaction]</span>
+</p>
+</body>
+</html>

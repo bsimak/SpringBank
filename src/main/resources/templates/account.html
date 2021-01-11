@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Bank Transactions</title>
+</head>
+<body>
+<p>Your Bank Transactions,
+    <span th:text="${username}" th:remove="tag">[Username]</span>
+    last update:
+    <span th:text="${#dates.format(currentDate, 'dd-MM-yyyy HH:mm')}">[currentDate]</span>
+    </div>
+</p>
+<p>
+<form th:action="@{/account}" th:object="${accountForm}" method="post">
+    <span th:text="${transaction}" th:remove="tag">[Transaction]</span>,
+</form>
+</p>
+
+</body>
+</html>
