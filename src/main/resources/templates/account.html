@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Your Bank Transactions</title>
 </head>
 <body>
 <p>Your Bank Transactions,
-    <span th:text="${username}" th:remove="tag">[Username]</span>
     last update:
-    <span th:text="${#dates.format(currentDate, 'dd-MM-yyyy HH:mm')}">[currentDate]</span>
-    </div>
+    <span th:text="${#dates.format(currentDate, 'dd-MM-yyyy HH:mm')}">[currentDate]</span><span th:text="*{username}"</span>
 </p>
+<table>
+    <tr>
+        <th>Transactions</th>
+    </tr>
+    <tr>
+        <td>tth:text="${transaction}" th:remove="tag">[Transaction]</td>
+    </tr>
+</table>
 <p>
 <form th:action="@{/account}" th:object="${accountForm}" method="post">
     <span th:text="${transaction}" th:remove="tag">[Transaction]</span>,

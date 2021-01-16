@@ -6,12 +6,12 @@ import javax.validation.constraints.NotBlank;
 public class AccountForm {
     @NotBlank
     private String username ="Barbara";
-    private String transaction = "";
+    private String transaction = "TRX12345";
 
     public String getUsername() {
         return username;
     }
-    public void setUsername (String username) {
+   public void setUsername (String username) {
         this.username = username;
     }
     public String getTransaction() {

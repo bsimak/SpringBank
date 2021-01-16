@@ -3,6 +3,9 @@
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/web/MyBankServlet.java
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/web/GlobalExceptionHandler.java
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/ApplicationLauncher.java
+/Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/web/forms/LoginForm.java
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/dto/TransactionDTO.java
+/Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/web/WebsiteController.java
+/Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/web/forms/AccountForm.java
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/model/Transaction.java
 /Users/barbara.simak/Documents/SpringBank/src/main/java/org/example/service/TransactionService.java

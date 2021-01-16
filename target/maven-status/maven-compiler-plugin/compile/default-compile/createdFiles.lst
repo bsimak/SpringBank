@@ -1,8 +1,11 @@
 org/example/web/GlobalExceptionHandler.class
 org/example/web/MyBankServlet.class
-org/example/web/TransactionController.class
 org/example/service/TransactionService.class
+org/example/model/Transaction.class
+org/example/web/forms/AccountForm.class
+org/example/web/forms/LoginForm.class
+org/example/web/WebsiteController.class
+org/example/web/TransactionController.class
 org/example/context/ApplicationConfiguration.class
 org/example/ApplicationLauncher.class
-org/example/model/Transaction.class
 org/example/dto/TransactionDTO.class
